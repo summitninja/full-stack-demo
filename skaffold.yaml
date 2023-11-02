@@ -1,0 +1,30 @@
+apiVersion: skaffold/v2beta16
+kind: Config
+metadata:
+  name: my-app
+build:
+  artifacts:
+    # - image: my-app-frontend
+    #   context: src/frontend
+    #   docker:
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: "src/**/*"
+    #         dest: .
+    - image: my-app-backend
+      context: src/backend
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+deploy:
+  helm:
+    releases:
+      - name: my-app
+        chartPath: chart
+        setValues:
+          # frontend.image: my-app-frontend
+          backend.image: my-app-backend

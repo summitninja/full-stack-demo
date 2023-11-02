@@ -1,0 +1,29 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: {{.Values.postgres.hostname}}
+  # annotations:
+  #   # This is what defines this resource as a hook. Without this line, the
+  #   # job is considered part of the release.
+  #   "helm.sh/hook": pre-delete
+  #   "helm.sh/hook-weight": "-5"
+  #   "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  teamId: "acid"
+  volume:
+    size: 1Gi
+  numberOfInstances: 1
+  users:
+    backend:  # database owner
+    - superuser
+    - createdb
+    kratos:
+    - superuser
+    - createdb
+  databases:
+    foo: backend  # dbname: owner
+    kratos: kratos
+  preparedDatabases:
+    bar: {}
+  postgresql:
+    version: "15"

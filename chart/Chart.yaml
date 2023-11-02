@@ -1,0 +1,16 @@
+apiVersion: "v2"
+version: 0.1.0
+name: full-stack-demo
+dependencies:
+  - name: kratos
+    repository: https://k8s.ory.sh/helm/charts
+    version: "v0.37.0"
+    condition: kratos.enabled
+  - name: traefik
+    repository: https://traefik.github.io/charts
+    version: "25.0.0"
+    condition: traefik.enabled
+  - name: postgres-operator
+    repository: https://opensource.zalando.com/postgres-operator/charts/postgres-operator
+    version: "1.10.1"
+    condition: postgres.enabled

@@ -1,0 +1,12 @@
+dependencies:
+- name: kratos
+  repository: https://k8s.ory.sh/helm/charts
+  version: 0.37.0
+- name: traefik
+  repository: https://traefik.github.io/charts
+  version: 25.0.0
+- name: postgres-operator
+  repository: https://opensource.zalando.com/postgres-operator/charts/postgres-operator
+  version: 1.10.1
+digest: sha256:836f35f0f57cd6c3279f1ba9391cce8219f24549e778301afce3538e05111a10
+generated: "2023-10-31T14:48:30.208596793-07:00"
