@@ -1,7 +1,9 @@
-FROM oven/bun:latest
+FROM node:latest
 
 WORKDIR /app
 
+# Install bun
+RUN npm install -g bun
 
 COPY bun.lockb package.json /app/
 
