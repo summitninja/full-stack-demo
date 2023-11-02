@@ -1,6 +1,7 @@
 apiVersion: "v2"
 version: 0.1.0
 name: full-stack-demo
+description: "Chart for deploying the full stack demo"
 dependencies:
   - name: kratos
     repository: https://k8s.ory.sh/helm/charts
