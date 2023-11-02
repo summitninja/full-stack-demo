@@ -22,5 +22,4 @@ jobs:
 
       - name: Lint Helm Chart
         run: |
-          cd chart
-          helm lint .
+          helm lint chart
