@@ -21,5 +21,40 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
-          env:
-            
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  labels:
+    app: backend
+spec:
+  selector:
+    app: backend
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      protocol: TCP
+---
+{{ if .Values.ingress.enabled }}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: backend-ingress
+spec:
+  entryPoints:
+    - web
+    {{ if .Values.ingress.secure }}
+    - websecure
+    {{ end }}
+  routes:
+    - match: Host(`{{.Values.ingress.hostname}}`) && PathPrefix(`/api`)
+      kind: Rule
+      priority: 11
+      services:
+        - name: backend-service
+          port: 80
+---
+{{ end }}
