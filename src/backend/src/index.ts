@@ -1,7 +1,9 @@
 import { Elysia } from "elysia";
 
 const app = new Elysia()
-  .get("/", () => "Hello Elysia")
+  .group("/api", (app) => {
+    return app.get("/", () => "Hello Elysia");
+  })
   .listen({ hostname: "0.0.0.0", port: 80 });
 
 console.log(
