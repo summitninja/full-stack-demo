@@ -18,6 +18,8 @@ postgres:
   database: mypgdb
 
 ingress:
+  # turns on ingress
+  enabled: true
   # create traefik ingress objects(Requires traefik pre installed or enabled in this chart)
   traefik: true
   hostname: "localhost"
