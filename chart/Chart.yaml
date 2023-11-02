@@ -2,7 +2,7 @@ apiVersion: "v2"
 version: 0.1.0
 name: full-stack-demo
 description: "Chart for deploying the full stack demo"
-icon: "icon.png"
+icon: "https://github.com/summitninja/full-stack-demo/blob/56fc625ca4f2b1c2fc1f71221bf83f4801c45e02/chart/icon.png?raw=true"
 dependencies:
   - name: kratos
     repository: https://k8s.ory.sh/helm/charts
